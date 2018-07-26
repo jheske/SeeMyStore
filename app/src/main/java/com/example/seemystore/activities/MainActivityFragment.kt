@@ -1,19 +1,20 @@
-package com.example.seemystore
+package com.example.seemystore.activities
 
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.seemystore.R
+import com.example.seemystore.Store
+import com.example.seemystore.StoreListAdapter
 import com.example.seemystore.api.ApiClient
 import com.example.seemystore.api.ApiInterface
 import com.example.seemystore.api.StoreResponse
-import com.example.seemystore.database.StoreDb
+import com.example.seemystore.currentActivity
 import com.example.seemystore.database.StoreTable
 import kotlinx.android.synthetic.main.fragment_activity_main.*
 import retrofit2.Call

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.example.seemystore.StoreActivity">
+    tools:context="com.example.seemystore.activities.StoreActivity">
 
     <!-- https://blog.alexanderschaefer.io/android-toolbar-with-background-image/ -->
     <!-- https://github.com/nex3z/android-examples/blob/master/MasterDetailExample/app/src/main/res/values/styles.xml -->
@@ -17,8 +17,16 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <include layout="@layout/toolbar" />
+        <android.support.v7.widget.Toolbar
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
+        </android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
         <android.support.constraint.ConstraintLayout
             android:id="@+id/layout_container"

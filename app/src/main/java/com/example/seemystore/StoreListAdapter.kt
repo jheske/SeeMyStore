@@ -5,7 +5,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.seemystore.R
+import com.example.seemystore.activities.STORE_ID_EXTRA
+import com.example.seemystore.activities.StoreActivity
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.listitem_store_details.view.*
 import java.util.ArrayList
 
@@ -33,15 +35,17 @@ class StoreListAdapter(private val stores: MutableList<Store>) :
             val context = itemView.context
             val showStoreIntent = Intent(context, StoreActivity::class.java)
             showStoreIntent.putExtra(STORE_ID_EXTRA, store?.storeID)
+
             context.startActivity(showStoreIntent)
         }
 
         fun bindStore(store: Store) {
             this.store = store
             view.tv_name.text = store.name
-            /*         Picasso.with(view.context).load(photo.url).into(view.itemImage)
-                     view.itemDate.text = photo.humanDate
-                     view.itemDescription.text = photo.explanation*/
+            view.tv_address.text = store.address
+            Picasso.get()
+                    .load(store.storeLogoURL)
+                    .into(view.img_store)
         }
     }
 
