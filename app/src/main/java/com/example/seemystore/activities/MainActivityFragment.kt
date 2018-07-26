@@ -7,12 +7,15 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import com.example.seemystore.*
 import com.example.seemystore.api.ApiClient
 import com.example.seemystore.api.ApiInterface
 import com.example.seemystore.api.StoreResponse
 import com.example.seemystore.database.StoreTable
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -27,7 +30,7 @@ class MainActivityFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_activity_main, container, false)
-        return view
+         return view
     }
 
     override fun onAttach(context: Context) {
@@ -38,12 +41,15 @@ class MainActivityFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         mStoreList = StoreTable(mContext).dbGetAllStores()
-        getData()
-        setupRecyclerView()
         if (currentActivity.applicationContext.isNetworkAvailable()) {
+            tv_network_error.visibility = GONE
+            rv_store_list.visibility = VISIBLE
+            getData()
+            setupRecyclerView()
             displayStores()
         } else {
-            
+            tv_network_error.visibility = VISIBLE
+            rv_store_list.visibility = GONE
         }
     }
 

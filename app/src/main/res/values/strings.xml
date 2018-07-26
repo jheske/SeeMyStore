@@ -4,4 +4,5 @@
     <string name="txt_welcome">Welcome to {store_name}</string>
     <string name="txt_city_state_zip">{city}, {state},  {zipcode}</string>
     <string name="txt_lat_long">In case you were wondering, thats Latitude: {latitude}, Longitude: {longitude} </string>
+    <string name="text_no_network">You must be connected to the network to fetch stores.</string>
 </resources>
