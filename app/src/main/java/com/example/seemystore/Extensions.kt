@@ -18,15 +18,36 @@ import java.net.HttpURLConnection
 import java.net.MalformedURLException
 import java.net.URL
 import android.R.attr.bitmap
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 
 
 /**
  * Created by jill
  */
 
+
 val Fragment.currentActivity: FragmentActivity
     get() = this.activity ?: throw IllegalStateException("Activity must not be null")
 
+
+fun Context.isNetworkAvailable(): Boolean {
+    var haveConnectedWifi = false
+    var haveConnectedMobile = false
+    val cm = getSystemService(Context.CONNECTIVITY_SERVICE)
+            as ConnectivityManager
+    val netInfo = cm.allNetworkInfo
+    for (ni in netInfo) {
+        if (ni.typeName.equals("WIFI", ignoreCase = true))
+            if (ni.isConnected)
+                haveConnectedWifi = true
+        if (ni.typeName.equals("MOBILE", ignoreCase = true))
+            if (ni.isConnected)
+                haveConnectedMobile = true
+    }
+    return haveConnectedWifi || haveConnectedMobile
+}
 
 fun AppCompatActivity.setToolbarTitle(activityTitle: String?) {
     supportActionBar?.title = activityTitle.let {

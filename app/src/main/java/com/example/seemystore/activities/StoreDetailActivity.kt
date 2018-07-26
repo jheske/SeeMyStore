@@ -9,7 +9,10 @@ import com.example.seemystore.Store
 import com.example.seemystore.database.StoreTable
 import com.example.seemystore.setToolbarLogo
 import com.example.seemystore.setupToolbar
+import com.squareup.phrase.Phrase
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_store_detail.*
+import kotlinx.android.synthetic.main.listitem_store_details.view.*
 import retrofit2.http.Url
 
 const val STORE_ID_EXTRA = "STORE_ID_EXTRA"
@@ -42,8 +45,30 @@ class StoreActivity : AppCompatActivity() {
 
     private fun setupViews(store: Store) {
         store.apply {
-            tv_name.text = name
+            Picasso.get()
+                    .load(storeLogoURL)
+                    .into(img_store)
+
+            val welcome = Phrase.from(getString(R.string.txt_welcome))
+                    .put("store_name", name)
+                    .format()
+                    .toString()
+            tv_welcome.text = welcome
             tv_address.text = address
+            val city_state_zip = Phrase.from(getString(R.string.txt_city_state_zip))
+                    .put("city", city)
+                    .put("state", state)
+                    .put("zipcode", zipcode)
+                    .format()
+                    .toString()
+            tv_city_state_zip.text = city_state_zip
+            val lat_long = Phrase.from(getString(R.string.txt_lat_long))
+                    .put("latitude", latitude.toString())
+                    .put("longitude", longitude.toString())
+                    .format()
+                    .toString()
+            tv_phone.text = phone
+            tv_lat_long.text = lat_long
         }
     }
 

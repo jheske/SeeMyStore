@@ -1,5 +1,7 @@
 package com.example.seemystore.activities
 
+import android.content.Context
+import android.net.ConnectivityManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.seemystore.R
@@ -16,4 +18,6 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(main_activity_toolbar)
         setToolbarTitle(getString(R.string.app_name))
     }
+
+
 }

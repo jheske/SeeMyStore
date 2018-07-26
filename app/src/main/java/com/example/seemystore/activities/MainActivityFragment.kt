@@ -8,13 +8,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.seemystore.R
-import com.example.seemystore.Store
-import com.example.seemystore.StoreListAdapter
+import com.example.seemystore.*
 import com.example.seemystore.api.ApiClient
 import com.example.seemystore.api.ApiInterface
 import com.example.seemystore.api.StoreResponse
-import com.example.seemystore.currentActivity
 import com.example.seemystore.database.StoreTable
 import kotlinx.android.synthetic.main.fragment_activity_main.*
 import retrofit2.Call
@@ -43,7 +40,11 @@ class MainActivityFragment : Fragment() {
         mStoreList = StoreTable(mContext).dbGetAllStores()
         getData()
         setupRecyclerView()
-        displayStores()
+        if (currentActivity.applicationContext.isNetworkAvailable()) {
+            displayStores()
+        } else {
+            
+        }
     }
 
     private fun displayStores() {
