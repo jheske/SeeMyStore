@@ -52,13 +52,22 @@ class StoreActivity : AppCompatActivity() {
                     .toString()
             tv_welcome.text = welcome
             tv_address.text = address
+
             val city_state_zip = Phrase.from(getString(R.string.txt_city_state_zip))
                     .put("city", city)
                     .put("state", state)
                     .put("zipcode", zipcode)
                     .format()
                     .toString()
+
+            val store_number = Phrase.from(getString(R.string.txt_store_number))
+                    .put("store_number",storeID)
+                    .format()
+                    .toString()
+
+            tv_store_number.text = store_number
             tv_city_state_zip.text = city_state_zip
+
             val lat_long = Phrase.from(getString(R.string.txt_lat_long))
                     .put("latitude", latitude.toString())
                     .put("longitude", longitude.toString())

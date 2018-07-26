@@ -56,7 +56,7 @@
             tools:text="Welcome to Macy's" />
 
         <TextView
-            android:id="@+id/tv_address"
+            android:id="@+id/tv_store_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/large_content_separator"
@@ -64,6 +64,17 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_welcome"
+            tools:text="Store #12345" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/large_content_separator"
+            android:textSize="@dimen/large_text_size"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_store_number"
             tools:text="Address" />
 
         <TextView
