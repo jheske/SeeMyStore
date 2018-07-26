@@ -1,7 +1,5 @@
 package com.example.seemystore.activities
 
-import android.content.Context
-import android.net.ConnectivityManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.example.seemystore.R
@@ -9,7 +7,6 @@ import com.example.seemystore.setToolbarTitle
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private val TAG = MainActivity::class.java.simpleName
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

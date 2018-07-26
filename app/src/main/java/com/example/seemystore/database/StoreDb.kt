@@ -44,9 +44,7 @@ class StoreDb(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME,
         if (DEBUG)
             Log.d(TAG, "Upgrading database from version $oldVersion to $newVersion")
         if (newVersion > oldVersion) {
-            //TODO WATCH OUT, ALL DATA WILL BE LOST ON onCreate(db)
-            //onCreate(db)
+            //ADD OR ALTER TABLES
         }
-        //onCreate(db)
     }
 }

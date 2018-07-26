@@ -8,9 +8,6 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.seemystore.activities.StoreActivity">
 
-    <!-- https://blog.alexanderschaefer.io/android-toolbar-with-background-image/ -->
-    <!-- https://github.com/nex3z/android-examples/blob/master/MasterDetailExample/app/src/main/res/values/styles.xml -->
-    <!-- http://tutorialsbuzz.com/2015/11/android-collapsingtoolbarlayout-example_7.html -->
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"

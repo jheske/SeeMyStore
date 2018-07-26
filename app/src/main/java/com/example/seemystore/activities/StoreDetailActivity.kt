@@ -7,13 +7,10 @@ import android.view.MenuItem
 import com.example.seemystore.R
 import com.example.seemystore.Store
 import com.example.seemystore.database.StoreTable
-import com.example.seemystore.setToolbarLogo
 import com.example.seemystore.setupToolbar
 import com.squareup.phrase.Phrase
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_store_detail.*
-import kotlinx.android.synthetic.main.listitem_store_details.view.*
-import retrofit2.http.Url
 
 const val STORE_ID_EXTRA = "STORE_ID_EXTRA"
 
@@ -26,7 +23,7 @@ class StoreActivity : AppCompatActivity() {
         val storeId = intent?.getStringExtra(STORE_ID_EXTRA)
         val store =   StoreTable(this).dbGetStore(storeId)
         store?.let {
-            setupToolbar(true)
+            setupToolbar(store.name,true)
             setupViews(it)
         }
     }
@@ -71,6 +68,4 @@ class StoreActivity : AppCompatActivity() {
             tv_lat_long.text = lat_long
         }
     }
-
-
 }

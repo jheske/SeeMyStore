@@ -2,16 +2,9 @@ package com.example.seemystore.database
 
 import android.provider.BaseColumns
 
-val DATABASE_NAME = "remotestores.db"
+val DATABASE_NAME = "seemystores.db"
 val DATABASE_VERSION = 1  //1.0, 1.1, etc.
 
-/**
- * Schema for one entry in the database
- *
- * _COL_ID vars are determined at runtime in OrchidTable.kt
- * so they will be correct no matter how much their order is
- * swapped around in the CREATE TABLE statement
- */
 object StoreEntry : BaseColumns {
     val STORE_TABLE_NAME = "stores"
     val ID_COL = "_id"

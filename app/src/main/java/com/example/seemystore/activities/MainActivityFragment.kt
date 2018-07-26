@@ -15,7 +15,6 @@ import com.example.seemystore.api.ApiClient
 import com.example.seemystore.api.ApiInterface
 import com.example.seemystore.api.StoreResponse
 import com.example.seemystore.database.StoreTable
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -62,17 +61,14 @@ class MainActivityFragment : Fragment() {
         val apiService = ApiClient.client.create(ApiInterface::class.java)
         val call = apiService.getStoresList()
 
-        //https://android.jlelse.eu/keddit-part-6-api-retrofit-kotlin-d309074af0
         call.enqueue(object : Callback<StoreResponse> {
             override fun onResponse(call: Call<StoreResponse>, response: Response<StoreResponse>) {
-                //var storeList: List<Store> = response.body()?.stores!!
                 mStoreList = response.body()?.stores!!
                 StoreTable(currentActivity).dbAddAllStores(mStoreList)
                 Log.e(TAG, "Success!!!")
             }
 
             override fun onFailure(call: Call<StoreResponse>?, t: Throwable?) {
-                //progressBar.visibility = View.GONE
                 Log.e(TAG, t.toString())
             }
         })
@@ -82,11 +78,8 @@ class MainActivityFragment : Fragment() {
         rv_store_list.setHasFixedSize(true)
         rv_store_list.layoutManager = LinearLayoutManager(mContext)
         rv_store_list.setNestedScrollingEnabled(false)
-        mStoreListAdapter = StoreListAdapter(mStoreList)
+        mStoreListAdapter = StoreListAdapter()
         rv_store_list.adapter = mStoreListAdapter
     }
 
-    private fun addStoreToAdapter(store: Store) {
-        mStoreListAdapter.add(store)
-    }
 }

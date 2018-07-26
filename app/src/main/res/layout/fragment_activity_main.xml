@@ -12,7 +12,7 @@
         android:textSize="@dimen/title_size"
         android:gravity="center"
         android:textStyle="bold"
-        android:text="@string/text_no_network"
+        android:text="@string/txt_no_network"
         android:visibility="visible"/>
 
     <android.support.v7.widget.RecyclerView

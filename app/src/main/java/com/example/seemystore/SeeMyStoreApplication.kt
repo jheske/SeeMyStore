@@ -4,12 +4,10 @@ import android.app.Application
 import com.facebook.stetho.Stetho
 
 class SeeMyStoreApplication : Application() {
-    private var mNetworkAvailable = false
-
-
     override fun onCreate() {
         super.onCreate()
 
+        //Database debugging in Chrome
         Stetho.initialize(
                 Stetho.newInitializerBuilder(this)
                         .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))

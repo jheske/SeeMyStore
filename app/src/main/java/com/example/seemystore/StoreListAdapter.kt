@@ -11,17 +11,10 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.listitem_store_details.view.*
 import java.util.ArrayList
 
-//https://www.raywenderlich.com/170075/android-recyclerview-tutorial-kotlin
-class StoreListAdapter(private val stores: MutableList<Store>) :
+class StoreListAdapter() :
         RecyclerView.Adapter<StoreListAdapter.ViewHolder>() {
 
-    private val TAG = StoreListAdapter::class.java.simpleName
     private val mStoreList: MutableList<Store> = ArrayList()
-
-    /**
-     *  Set up the view holder and create vars for its views
-     * //https://android.jlelse.eu/using-recyclerview-in-android-kotlin-722991e86bf3
-     */
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v), View.OnClickListener {
         private var view: View = v
@@ -90,9 +83,6 @@ class StoreListAdapter(private val stores: MutableList<Store>) :
         notifyItemInserted(position)
     }
 
-    /**
-     * Add an item to the end of the list
-     */
     fun add(store: Store) {
         mStoreList.add(store)
     }

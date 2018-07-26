@@ -8,17 +8,6 @@ import android.support.v4.app.FragmentActivity
 import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.toolbar.*
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.BitmapFactory
-import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
-import retrofit2.http.Url
-import java.io.IOException
-import java.net.HttpURLConnection
-import java.net.MalformedURLException
-import java.net.URL
-import android.R.attr.bitmap
-import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 
@@ -55,20 +44,15 @@ fun AppCompatActivity.setToolbarTitle(activityTitle: String?) {
     }
 }
 
-fun AppCompatActivity.setToolbarLogo(urlString: String?) {
-    urlString?.let {
-        val logo = getLogoDrawable(it)
-        supportActionBar?.setLogo(logo)
-    }
-}
-
-fun AppCompatActivity.setupToolbar(displayHomeButton: Boolean = false,
+fun AppCompatActivity.setupToolbar(activityTitle: String? = null,
+                                   displayHomeButton: Boolean = false,
                                    backgroundColorId: Int? = null) {
     setSupportActionBar(toolbar)
     if (displayHomeButton) {
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+    setToolbarTitle(activityTitle)
     backgroundColorId?.let {
         supportActionBar?.setBackgroundDrawable(ColorDrawable(ContextCompat
                 .getColor(this,
@@ -76,17 +60,10 @@ fun AppCompatActivity.setupToolbar(displayHomeButton: Boolean = false,
     }
 }
 
-fun getLogoDrawable(urlString: String): Drawable? {
-    val inputStream = java.net.URL(urlString).openStream()
-    return BitmapDrawable(inputStream)
-}
-
 inline fun <T> SQLiteDatabase.transaction(dbFunction: SQLiteDatabase.() -> T): T {
     beginTransaction()
     val result = try {
-        //based on commented fun signature
-        //dbFunction(this)
-        val returnVal = dbFunction()  // this.dbFunction()
+        val returnVal = dbFunction()
         setTransactionSuccessful()
         returnVal
     } finally {
@@ -97,7 +74,6 @@ inline fun <T> SQLiteDatabase.transaction(dbFunction: SQLiteDatabase.() -> T): T
     return result
 }
 
-//fun SQLiteDatabase.query(table: String, columns: Array<String>,
 fun SQLiteDatabase.dbQuery(table: String, columns: Array<String>? = null,
                            selection: String? = null, selectionArgs: Array<String>? = null,
                            groupBy: String? = null, having: String? = null,
