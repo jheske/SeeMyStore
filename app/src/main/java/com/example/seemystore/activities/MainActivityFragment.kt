@@ -44,8 +44,6 @@ class MainActivityFragment : Fragment() {
             tv_network_error.visibility = GONE
             rv_store_list.visibility = VISIBLE
             getData()
-            setupRecyclerView()
-            displayStores()
         } else {
             tv_network_error.visibility = VISIBLE
             rv_store_list.visibility = GONE
@@ -65,6 +63,8 @@ class MainActivityFragment : Fragment() {
             override fun onResponse(call: Call<StoreResponse>, response: Response<StoreResponse>) {
                 mStoreList = response.body()?.stores!!
                 StoreTable(currentActivity).dbAddAllStores(mStoreList)
+                setupRecyclerView()
+                displayStores()
                 Log.e(TAG, "Success!!!")
             }
 

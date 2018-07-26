@@ -35,7 +35,7 @@ class StoreListAdapter() :
         fun bindStore(store: Store) {
             this.store = store
             view.tv_name.text = store.name
-            view.tv_address.text = store.address
+            view.tv_phone.text = store.phone
             Picasso.get()
                     .load(store.storeLogoURL)
                     .into(view.img_store)
