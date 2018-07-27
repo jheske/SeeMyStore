@@ -1,3 +1,8 @@
+/*
+ * Created by Jill Heske on 7/26/2018
+ * Copyright (c) All rights reserved
+ */
+
 package com.example.seemystore.activities
 
 import android.content.Context

@@ -1,9 +1,10 @@
+/*
+ * Created by Jill Heske on 7/26/2018
+ * Copyright (c) All rights reserved
+ */
+
 package com.example.seemystore
 
-/**
- * @author Jill Heske
- *
- */
 data class Store(var storeLogoURL: String,
             var storeID: String,
             var name: String,
